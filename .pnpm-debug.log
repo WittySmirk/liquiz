@@ -1,0 +1,20 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 error pnpm": {
+    "shortMessage": "Command failed with exit code 1: C:\\Users\\wyatt\\AppData\\Roaming\\npm\\pnpm.CMD add create-solid --global --global-dir C:\\Users\\wyatt\\AppData\\Local\\Temp\\dlx-7432 --dir C:\\Users\\wyatt\\AppData\\Local\\Temp\\dlx-7432",
+    "command": "C:\\Users\\wyatt\\AppData\\Roaming\\npm\\pnpm.CMD add create-solid --global --global-dir C:\\Users\\wyatt\\AppData\\Local\\Temp\\dlx-7432 --dir C:\\Users\\wyatt\\AppData\\Local\\Temp\\dlx-7432",
+    "escapedCommand": "\"C:\\Users\\wyatt\\AppData\\Roaming\\npm\\pnpm.CMD\" add create-solid --global --global-dir \"C:\\Users\\wyatt\\AppData\\Local\\Temp\\dlx-7432\" --dir \"C:\\Users\\wyatt\\AppData\\Local\\Temp\\dlx-7432\"",
+    "exitCode": 1,
+    "failed": true,
+    "timedOut": false,
+    "isCanceled": false,
+    "killed": false,
+    "err": {
+      "name": "pnpm",
+      "message": "Command failed with exit code 1: C:\\Users\\wyatt\\AppData\\Roaming\\npm\\pnpm.CMD add create-solid --global --global-dir C:\\Users\\wyatt\\AppData\\Local\\Temp\\dlx-7432 --dir C:\\Users\\wyatt\\AppData\\Local\\Temp\\dlx-7432",
+      "stack": "pnpm: Command failed with exit code 1: C:\\Users\\wyatt\\AppData\\Roaming\\npm\\pnpm.CMD add create-solid --global --global-dir C:\\Users\\wyatt\\AppData\\Local\\Temp\\dlx-7432 --dir C:\\Users\\wyatt\\AppData\\Local\\Temp\\dlx-7432\n    at makeError (C:\\Users\\wyatt\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:42502:17)\n    at handlePromise (C:\\Users\\wyatt\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:43073:33)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.handler (C:\\Users\\wyatt\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:177503:7)\n    at async C:\\Users\\wyatt\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:182194:21\n    at async run (C:\\Users\\wyatt\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:182168:34)\n    at async runPnpm (C:\\Users\\wyatt\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:182387:5)\n    at async C:\\Users\\wyatt\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:182379:7"
+    }
+  }
+}
