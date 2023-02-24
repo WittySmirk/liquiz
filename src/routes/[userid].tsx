@@ -9,8 +9,8 @@ export function routeData() {
 
 export default function UserLayout() {
     return (
-        <>
+        <main class="flex flex-col items-center">
             <Outlet />
-        </>
+        </main>
     );
 }

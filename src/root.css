@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-bg-color-dark;
+        @apply text-text-color-dark;
+        @apply font-ubuntu;
+    }
+
+    h1 {
+        @apply text-2xl;
+        @apply text-highlight-color-dark;
+    }
+
+    a {
+        @apply bg-undertone-color-dark;
+        @apply text-text-color-dark;
+        @apply p-1;
+        @apply mb-5;
+    }
+}
