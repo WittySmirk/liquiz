@@ -3,12 +3,10 @@ import { useParams, useRouteData } from "solid-start";
 import { routeData } from "~/routes/[userid]";
 import type { card } from "~/utils/testset";
 
-// TODO : Best practices
 export default function Write() {
     const [intermission, setIntermission] = createSignal<boolean>(false);
     const [current, setCurrent] = createSignal<number>(0);
     const [answered, setAnswered] = createSignal<boolean>(false);
-    const [answer, setAnswer] = createSignal<string>("");
     const [correct, setCorrect] = createSignal<boolean>(false);
     const [right, setRight] = createSignal<number>(0);
 
@@ -18,8 +16,10 @@ export default function Write() {
     let cards: card[] | undefined = data()?.sets[0].cards;
     let wrongs: card[] | undefined = cards;
 
+    let answer: HTMLInputElement;
+
     function correctCheck() {
-        if (answer().toLowerCase() === cards![current()].term.toLowerCase()) {
+        if (answer.value.toLowerCase() === cards![current()].term.toLowerCase()) {
             setCorrect(true);
             setRight(r => r + 1);
             wrongs?.splice(current(), 1);
@@ -35,7 +35,7 @@ export default function Write() {
             setIntermission(true);
         }
         
-        setAnswer("");
+        answer.value = "";
         setAnswered(false);
     }
 
@@ -55,7 +55,7 @@ export default function Write() {
                                 cards = wrongs;
                                 setCurrent(0);
 
-                                setAnswer("");
+                                answer.value = "";
                                 setAnswered(false);
                             }}>Keep Going</button>
                         </div>
@@ -73,7 +73,7 @@ export default function Write() {
                                 correctCheck();
                             }}>
                                 <label for="answer">Answer</label>
-                                <input type="text" name="answer" id="answer" value={answer()} onChange={(e) => setAnswer(e.currentTarget.value)} />
+                                <input ref={answer} type="text" name="answer" id="answer" />
                             </form>
                         </div>
                         <Show when={answered()} fallback={<></>}>
