@@ -3,6 +3,7 @@ import { useParams, useRouteData } from "solid-start";
 import { routeData } from "~/routes/[userid]";
 import type { card } from "~/utils/testset";
 
+// TODO : Best practices
 export default function Write() {
     const [intermission, setIntermission] = createSignal<boolean>(false);
     const [current, setCurrent] = createSignal<number>(0);
@@ -20,7 +21,7 @@ export default function Write() {
     function correctCheck() {
         if (answer().toLowerCase() === cards![current()].term.toLowerCase()) {
             setCorrect(true);
-            setRight(right() + 1);
+            setRight(r => r + 1);
             wrongs?.splice(current(), 1);
         } else {
             setCorrect(false);
@@ -29,7 +30,7 @@ export default function Write() {
 
     function next() {
         if (current() + 1 < cards!.length) {
-            setCurrent(current() + 1); 
+            setCurrent(c => c + 1); 
         } else {
             setIntermission(true);
         }
