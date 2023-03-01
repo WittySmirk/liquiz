@@ -9,7 +9,7 @@ export default function Set() {
     const data = useRouteData<typeof routeData>();
 
     return (
-        <main>
+        <>
             <h1>{data()?.sets[0].title}</h1>
 
             <section class="pb-6">
@@ -18,15 +18,12 @@ export default function Set() {
                 <a href={`/${params.userid}/${params.set}/learn`}>Learn 🧠</a>
                 <a href={`/${params.userid}/${params.set}/match`}>Match 🔍</a>
                 <a href={`/${params.userid}/${params.set}/gravity`}>Gravity 🪨</a>
-                
             </section>
             <section>
                 <Show when={data()} fallback={<h1>Loading...</h1>}>
                     <Flashcard props={{ cards: data()!.sets[0].cards, preview: true }} />
                 </Show>
-                {params.userid} {params.set}
             </section>
-        </main>
-       
+        </>
     )
 }

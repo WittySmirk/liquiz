@@ -10,8 +10,11 @@
     }
 
     h1 {
-        @apply text-2xl;
+        @apply text-4xl;
         @apply text-highlight-color-dark;
+        @apply pt-8;
+        @apply pb-8;
+        @apply font-medium;
     }
 
     a {
@@ -19,5 +22,7 @@
         @apply text-text-color-dark;
         @apply p-1;
         @apply mb-5;
+        @apply mr-1;
+        @apply ml-1;
     }
 }

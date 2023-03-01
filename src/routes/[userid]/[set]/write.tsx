@@ -45,7 +45,7 @@ export default function Write() {
             <a href={`/${params.userid}/${params.set}/`}>Back to Set 🏠</a>
 
             <Show when={cards} fallback={<p>Loading</p>}>
-                <section>
+                <section class="bg-undertone-color-dark rounded-2xl fixed flex flex-col items-center content border-solid border-undertone-color-dark" style={{ "width": "clamp(370px, 50%, 50rem)", "height": "clamp(400px, 70%, 60rem)", "top": "18%"}}>
                     <Show when={!intermission()} fallback={
                         <div>
                             <h1>{Math.round((right() / cards!.length) * 100)}% Done</h1>
@@ -57,32 +57,35 @@ export default function Write() {
 
                                 answer.value = "";
                                 setAnswered(false);
-                            }}>Keep Going</button>
+                            }} class="rounded text-highlight-color-dark border-none outline outline-1 outline-highlight-color-dark bg-bg-color-dark">Keep Going</button>
                         </div>
                     }>
-                        <div>
-                            <h2>{current() + 1} / {cards!.length}</h2>
+                        <div class="text-center">
+                            <h2 class="text-highlight-color-dark">{current() + 1} / {cards!.length}</h2>
+                            <p>Score {right()} / {cards!.length}</p>
                         </div>
 
-                        <p>{cards![current()].definition}</p>
+                        <p class="ml-1 mr-1 text-2xl">{cards![current()].definition}</p>
 
-                        <div>
+                        <div style={{"margin-bottom": "0.1rem", "margin-left": "0.1rem", "margin-right": "3px"}} class="rounded bg-bg-color-dark w-full">
                             <form onsubmit={(e) => {
                                 e.preventDefault();
                                 setAnswered(true);
                                 correctCheck();
-                            }}>
-                                <label for="answer">Answer</label>
-                                <input ref={answer} type="text" name="answer" id="answer" />
+                            }} class="flex flex-col">
+                                <label for="answer" class="rounded text-highlight-color-dark border-none outline outline-1 outline-highlight-color-dark bg-bg-color-dark ml-1 font-bold text-xl">Answer</label>
+                                <input ref={answer!} type="text" name="answer" id="answer" class="rounded m-1 text-highlight-color-dark outline outline-1 outline-highlight-color-dark border-none bg-bg-color-dark" />
+                                <button type="submit" class="m-1">Submit</button>
+
+                                <Show when={answered()} fallback={<></>}>
+                                    <div class="ml-1 mb-1">
+                                        <h4 class="text-highlight-color-dark">{correct() ? 'Correct!' : 'Incorrect!'}</h4>
+                                        <p>{cards![current()].term}</p>
+                                        <button onClick={next} class="rounded text-highlight-color-dark border-none outline outline-1 outline-highlight-color-dark bg-bg-color-dark">Next</button>
+                                    </div>
+                                </Show>
                             </form>
                         </div>
-                        <Show when={answered()} fallback={<></>}>
-                            <div>
-                                <h4>{correct() ? 'Correct!' : 'Incorrect!'}</h4>
-                                <p>{cards![current()].term}</p>
-                                <button onClick={next}>Next</button>
-                            </div>
-                        </Show>
                     </Show>
                 </section>
             </Show>
