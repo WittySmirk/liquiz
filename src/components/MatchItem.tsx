@@ -27,7 +27,7 @@ export default function MatchItem(props: {text: string, x: number, y: number, in
         if (aabb(items()[props.index])) {
             console.log("match");
             setMatched(true); //Change to an animation or something
-            setLeft(l => l -1);
+            setLeft(l => l - 1);
         }
     }
 
