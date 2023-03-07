@@ -1,5 +1,4 @@
-import { A, Head, Meta, Title } from "solid-start";
-import Counter from "~/components/Counter";
+import { Head, Meta, Title } from "solid-start";
 
 export default function Home() {
   return (
