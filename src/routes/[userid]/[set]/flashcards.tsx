@@ -18,6 +18,7 @@ export default function Flaschards() {
                 <Flashcard
                     cards={data()!.sets[0].cards}
                     type={FlashcardType.PAGE}
+                    index={undefined}
                 />
             </Show>
         </>

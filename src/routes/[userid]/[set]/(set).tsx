@@ -28,6 +28,7 @@ export default function Set() {
                     <Flashcard
                         cards={data()!.sets[0].cards}
                         type={FlashcardType.PREVIEW}
+                        index={undefined}
                     />
                 </Show>
             </section>
