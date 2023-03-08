@@ -1,18 +1,18 @@
 export interface card {
-    term: string
-    definition: string
+    term: string;
+    definition: string;
 }
 
 export interface set {
-    title: string
-    slug: string
-    cards: card[]
+    title: string;
+    slug: string;
+    cards: card[];
 }
 
 export interface TestSet {
-    userid: string
-    username: string
-    sets: set[]
+    userid: string;
+    username: string;
+    sets: set[];
 }
 
 export const testset: TestSet = {
@@ -100,4 +100,4 @@ export const testset: TestSet = {
             ],
         },
     ],
-}
+};

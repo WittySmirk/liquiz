@@ -5,11 +5,11 @@ import {
     createSignal,
     createEffect,
     onMount,
-} from 'solid-js'
-import { useParams, useRouteData } from 'solid-start'
-import { card } from '~/utils/testset'
-import { routeData } from '~/routes/[userid]'
-import Flashcard, { FlashcardType } from '~/components/Flashcard'
+} from 'solid-js';
+import { useParams, useRouteData } from 'solid-start';
+import { card } from '~/utils/testset';
+import { routeData } from '~/routes/[userid]';
+import Flashcard, { FlashcardType } from '~/components/Flashcard';
 
 enum LearnInputType {
     TEXT,
@@ -18,31 +18,41 @@ enum LearnInputType {
 }
 
 interface Learning {
-    index: number
-    level: number
-    correctInARow: number
+    index: number;
+    level: number;
+    correctInARow: number;
 }
 
-export const [next, setNext] = createSignal<boolean>(false)
+export const [next, setNext] = createSignal<boolean>(false);
+const [levels, setLevels] = createSignal<Learning[]>([]);
+
+export function addCorrect(index: number) {
+    if (levels()[index].correctInARow + 1 == 3) {
+        levels()[index].level += 1;
+        levels()[index].correctInARow = 0;
+    } else {
+        levels()[index].correctInARow += 1;
+    }
+}
 
 function LearnInput(props: {
-    type: LearnInputType
-    index: number
-    cards: card[]
+    type: LearnInputType;
+    index: number;
+    cards: card[];
 }) {
     function create_random_others(cards: card[]): card[] {
-        let o: card[] = []
+        let o: card[] = [];
         for (let i = 1; i < 4; i++) {
-            o.push(cards[Math.floor(Math.random() * cards.length + 1)])
+            o.push(cards[Math.floor(Math.random() * cards.length + 1)]);
         }
-        return o
+        return o;
     }
 
-    const real = props.cards[props.index]
-    let others = null
+    const real = props.cards[props.index];
+    let others = null;
 
     if (props.type === LearnInputType.MC) {
-        others = create_random_others(props.cards)
+        others = create_random_others(props.cards);
     }
 
     return (
@@ -55,29 +65,27 @@ function LearnInput(props: {
                 </Match>
             </Switch>
         </>
-    )
+    );
 }
 
 export default function Learn() {
-    const [levels, setLevels] = createSignal<Learning[]>([])
+    const data = useRouteData<typeof routeData>();
+    const params = useParams();
 
-    const data = useRouteData<typeof routeData>()
-    const params = useParams()
-
-    const cards: card[] = data()!.sets[0].cards
+    const cards: card[] = data()!.sets[0].cards;
 
     createEffect(() => {
         if (next()) {
-            console.log('this happens')
-            setNext(false)
+            console.log('this happens');
+            setNext(false);
         }
-    })
+    });
 
     onMount(() => {
         for (let i = 0; i < cards.length; i++) {
-            setLevels((l) => [...l, { index: i, level: 0, correctInARow: 0 }])
+            setLevels((l) => [...l, { index: i, level: 0, correctInARow: 0 }]);
         }
-    })
+    });
 
     return (
         <>
@@ -98,5 +106,5 @@ export default function Learn() {
                 />
             </Show>
         </>
-    )
+    );
 }

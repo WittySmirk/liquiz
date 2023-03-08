@@ -1,4 +1,4 @@
-import { A } from 'solid-start'
+import { A } from 'solid-start';
 
 export default function NotFound() {
     return (
@@ -27,5 +27,5 @@ export default function NotFound() {
                 </A>
             </p>
         </main>
-    )
+    );
 }

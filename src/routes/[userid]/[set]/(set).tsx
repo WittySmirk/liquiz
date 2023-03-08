@@ -1,12 +1,12 @@
-import { useParams, useRouteData } from 'solid-start'
-import { routeData } from '~/routes/[userid]'
-import Flashcard, { FlashcardType } from '~/components/Flashcard'
-import { Show } from 'solid-js'
+import { useParams, useRouteData } from 'solid-start';
+import { routeData } from '~/routes/[userid]';
+import Flashcard, { FlashcardType } from '~/components/Flashcard';
+import { Show } from 'solid-js';
 
 export default function Set() {
-    const params = useParams()
+    const params = useParams();
 
-    const data = useRouteData<typeof routeData>()
+    const data = useRouteData<typeof routeData>();
 
     return (
         <>
@@ -32,5 +32,5 @@ export default function Set() {
                 </Show>
             </section>
         </>
-    )
+    );
 }

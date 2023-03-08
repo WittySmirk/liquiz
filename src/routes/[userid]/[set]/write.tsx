@@ -1,44 +1,44 @@
-import { createEffect, createSignal, Show } from 'solid-js'
-import { useParams, useRouteData } from 'solid-start'
-import { routeData } from '~/routes/[userid]'
-import type { card } from '~/utils/testset'
+import { createEffect, createSignal, Show } from 'solid-js';
+import { useParams, useRouteData } from 'solid-start';
+import { routeData } from '~/routes/[userid]';
+import type { card } from '~/utils/testset';
 
 export default function Write() {
-    const [intermission, setIntermission] = createSignal<boolean>(false)
-    const [current, setCurrent] = createSignal<number>(0)
-    const [answered, setAnswered] = createSignal<boolean>(false)
-    const [correct, setCorrect] = createSignal<boolean>(false)
-    const [right, setRight] = createSignal<number>(0)
+    const [intermission, setIntermission] = createSignal<boolean>(false);
+    const [current, setCurrent] = createSignal<number>(0);
+    const [answered, setAnswered] = createSignal<boolean>(false);
+    const [correct, setCorrect] = createSignal<boolean>(false);
+    const [right, setRight] = createSignal<number>(0);
 
-    const params = useParams()
-    const data = useRouteData<typeof routeData>()
+    const params = useParams();
+    const data = useRouteData<typeof routeData>();
 
-    let cards: card[] | undefined = data()?.sets[0].cards
-    let wrongs: card[] | undefined = cards
+    let cards: card[] | undefined = data()?.sets[0].cards;
+    let wrongs: card[] | undefined = cards;
 
-    let answer: HTMLInputElement
+    let answer: HTMLInputElement;
 
     function correctCheck() {
         if (
             answer.value.toLowerCase() === cards![current()].term.toLowerCase()
         ) {
-            setCorrect(true)
-            setRight((r) => r + 1)
-            wrongs?.splice(current(), 1)
+            setCorrect(true);
+            setRight((r) => r + 1);
+            wrongs?.splice(current(), 1);
         } else {
-            setCorrect(false)
+            setCorrect(false);
         }
     }
 
     function next() {
         if (current() + 1 < cards!.length) {
-            setCurrent((c) => c + 1)
+            setCurrent((c) => c + 1);
         } else {
-            setIntermission(true)
+            setIntermission(true);
         }
 
-        answer.value = ''
-        setAnswered(false)
+        answer.value = '';
+        setAnswered(false);
     }
 
     return (
@@ -67,13 +67,13 @@ export default function Write() {
                                 </h1>
                                 <button
                                     onClick={() => {
-                                        setIntermission(false)
+                                        setIntermission(false);
 
-                                        cards = wrongs
-                                        setCurrent(0)
+                                        cards = wrongs;
+                                        setCurrent(0);
 
-                                        answer.value = ''
-                                        setAnswered(false)
+                                        answer.value = '';
+                                        setAnswered(false);
                                     }}
                                     class="rounded text-highlight-color-dark border-none outline outline-1 outline-highlight-color-dark bg-bg-color-dark"
                                 >
@@ -105,9 +105,9 @@ export default function Write() {
                         >
                             <form
                                 onsubmit={(e) => {
-                                    e.preventDefault()
-                                    setAnswered(true)
-                                    correctCheck()
+                                    e.preventDefault();
+                                    setAnswered(true);
+                                    correctCheck();
                                 }}
                                 class="flex flex-col"
                             >
@@ -150,5 +150,5 @@ export default function Write() {
                 </section>
             </Show>
         </>
-    )
+    );
 }

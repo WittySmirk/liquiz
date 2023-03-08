@@ -1,5 +1,5 @@
-import { A, Head, Meta, Title } from 'solid-start'
-import Counter from '~/components/Counter'
+import { A, Head, Meta, Title } from 'solid-start';
+import Counter from '~/components/Counter';
 
 export default function Home() {
     return (
@@ -16,5 +16,5 @@ export default function Home() {
                 We don't like that Quizlet made stuff paid so we made it free
             </h4>
         </main>
-    )
+    );
 }

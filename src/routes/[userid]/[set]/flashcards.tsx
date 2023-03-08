@@ -1,13 +1,13 @@
-import { Show } from 'solid-js'
-import { useParams, useRouteData } from 'solid-start'
-import Flashcard from '~/components/Flashcard'
-import { FlashcardType } from '~/components/Flashcard'
-import { routeData } from '~/routes/[userid]'
+import { Show } from 'solid-js';
+import { useParams, useRouteData } from 'solid-start';
+import Flashcard from '~/components/Flashcard';
+import { FlashcardType } from '~/components/Flashcard';
+import { routeData } from '~/routes/[userid]';
 
 export default function Flaschards() {
-    const params = useParams()
+    const params = useParams();
 
-    const data = useRouteData<typeof routeData>()
+    const data = useRouteData<typeof routeData>();
 
     return (
         <>
@@ -21,5 +21,5 @@ export default function Flaschards() {
                 />
             </Show>
         </>
-    )
+    );
 }
