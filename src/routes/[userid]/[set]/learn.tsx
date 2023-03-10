@@ -60,24 +60,27 @@ function LearnMCComponent(props: {
     return (
         <>
             <Container center={false} onclick={undefined}>
-                {props.real.definition}
-                <For each={othersWithAnswer()}>
-                    {(item, index) => (
-                        <button
-                            onclick={() => {
-                                if (index() === indexOfAnswer()) {
-                                    learnAddCorrect(props.index);
-                                    setNext(true);
-                                } else {
-                                    learnWrong(props.index);
-                                    setNext(true);
-                                }
-                            }}
-                        >
-                            {item.term}
-                        </button>
-                    )}
-                </For>
+                <p class="ml-1 mr-1 text-3xl mt-14">{props.real.definition}</p>
+                <div class="mt-10 grid grid-rows-2 grid-cols-2 mr-5 ml-5 mb-5">
+                    <For each={othersWithAnswer()}>
+                        {(item, index) => (
+                            <button
+                                class="text-highlight-color-dark border-none outline outline-1 pt-2 pb-2 outline-highlight-color-dark bg-bg-color-dark text-xl pl-16 pr-16 pt-1 pb-1 rounded-md m-1"
+                                onclick={() => {
+                                    if (index() === indexOfAnswer()) {
+                                        learnAddCorrect(props.index);
+                                        setNext(true);
+                                    } else {
+                                        learnWrong(props.index);
+                                        setNext(true);
+                                    }
+                                }}
+                            >
+                                {item.term}
+                            </button>
+                        )}
+                    </For>
+                </div>
             </Container>
         </>
     );
@@ -156,18 +159,18 @@ export default function Learn() {
             <h1>Learn</h1>
             <a href={`/${params.userid}/${params.set}/`}>Back to Set 🏠</a>
             <Show when={data()} fallback={<h1>Loading...</h1>}>
-                /*
-                <LearnInput
-                    type={LearnInputType.TEXT}
-                    index={0}
-                    cards={cards}
-                />
-                {/*<LearnInput type={LearnInputType.MC} index={0} cards={cards} /> */}
-                <LearnInput
+                {/*}<LearnInput
+          type={LearnInputType.TEXT}
+          index={0}
+          cards={cards}
+        />*/}
+
+                <LearnInput type={LearnInputType.MC} index={0} cards={cards} />
+                {/*<LearnInput
                     type={LearnInputType.FLASHCARD}
                     index={0}
                     cards={cards}
-                />
+                />*/}
             </Show>
         </>
     );
